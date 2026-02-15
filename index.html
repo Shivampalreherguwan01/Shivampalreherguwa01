@@ -3,47 +3,18 @@
 <head>
     <title>Shivam Pal Reherguwan</title>
     <style>
-        body { 
-            margin: 0; padding: 50px; font-family: Arial, sans-serif; text-align: center; color: white; 
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden;
-        }
-
-        .box { 
-            background: rgba(255, 255, 255, 0.1); 
-            padding: 30px; 
-            border-radius: 20px; 
-            backdrop-filter: blur(10px); 
-            border: 2px solid #24c6dc; 
-            box-shadow: 0 0 20px #24c6dc;
-            display: inline-block;
-            animation: borderGlow 3s infinite alternate;
-        }
-
-        @keyframes borderGlow {
-            from { border-color: #24c6dc; box-shadow: 0 0 15px #24c6dc; }
-            to { border-color: #514a9d; box-shadow: 0 0 30px #514a9d; }
-        }
-
-        img { 
-            width: 160px; border-radius: 50%; border: 4px solid white; margin: 15px; 
-            box-shadow: 0 0 20px #fff;
-            animation: imgGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes imgGlow {
-            from { transform: scale(1); box-shadow: 0 0 10px #fff; }
-            to { transform: scale(1.05); box-shadow: 0 0 25px #24c6dc; }
-        }
-        
-        .btn { 
-            text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block; 
-            margin: 8px; color: white; padding: 12px 25px; width: 220px; transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            font-family: sans-serif;
-        }
+        body { margin: 0; padding: 50px; font-family: Arial, sans-serif; text-align: center; color: white; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .box { background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid #24c6dc; box-shadow: 0 0 20px #24c6dc; display: inline-block; animation: borderGlow 3s infinite alternate; position: relative; }
+        @keyframes borderGlow { from { border-color: #24c6dc; box-shadow: 0 0 15px #24c6dc; } to { border-color: #514a9d; box-shadow: 0 0 30px #514a9d; } }
+        img { width: 150px; border-radius: 50%; border: 4px solid white; margin: 15px; box-shadow: 0 0 20px #fff; animation: imgGlow 2s ease-in-out infinite alternate; }
+        @keyframes imgGlow { from { transform: scale(1); box-shadow: 0 0 10px #fff; } to { transform: scale(1.05); box-shadow: 0 0 25px #24c6dc; } }
+        .btn { text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block; margin: 8px; color: white; padding: 12px 25px; width: 220px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-family: sans-serif; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,255,255,0.2); }
-
+        
+        /* Play Music Button Style */
+        #musicBtn { background: linear-gradient(45deg, #ff512f, #dd2476); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-bottom: 15px; box-shadow: 0 0 15px #ff512f; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        
         marquee { position: absolute; top: 0; width: 100%; height: 100%; z-index: -1; font-size: 20px; }
     </style>
 </head>
@@ -55,6 +26,8 @@
     </marquee>
 
     <div class="box">
+        <button id="musicBtn" onclick="playMusic()">🎵 Click to Play Music</button>
+        
         <h1>Shivam Pal Reherguwan</h1>
         <p>Jai Shree Ram! 🙏</p>
         <img src="shivam.jpg">
@@ -67,14 +40,17 @@
     </div>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        document.body.addEventListener('click', function() {
+        function playMusic() {
             var audio = document.getElementById('bgMusic');
             audio.play();
-        }, { once: true });
+            document.getElementById('musicBtn').innerText = "🎶 Music Playing...";
+            document.getElementById('musicBtn').style.animation = "none";
+            document.getElementById('musicBtn').style.opacity = "0.7";
+        }
     </script>
 </body>
 </html>
