@@ -95,5 +95,22 @@
         <br>
         <a href="upi://pay?pa=9343747271@ybl&pn=Shivam Pal&cu=INR" class="btn" style="background-color: #5f259f;">Pay via PhonePe / UPI</a>
     </div>
+    <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-notice" style="position: fixed; bottom: 10px; left: 10px; font-size: 12px; color: rgba(255,255,255,0.5); font-family: sans-serif;">
+    Click anywhere to play Flute Music 🪈
+</div>
+
+<script>
+    // स्क्रीन पर कहीं भी क्लिक करते ही बांसुरी बजने लगेगी
+    document.body.addEventListener('click', function() {
+        var audio = document.getElementById('bgMusic');
+        audio.play();
+        document.getElementById('music-notice').style.display = 'none';
+    }, { once: true });
+</script>
+    
 </body>
 </html>
